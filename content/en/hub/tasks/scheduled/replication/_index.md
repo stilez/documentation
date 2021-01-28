@@ -20,7 +20,7 @@ This article provides an overview relevant to all types of replication. Examples
 
 ## Replication Wizard
 
-Optionally, instead of the full replication interface, a Replication Wizard can be used to quickly configure different simple replication scenarios, such as very quickly creating and copying ZFS snapshots to another location or pool on the same system. This is useful when no remote backup locations are available or when there is an immediate danger of disk failure.
+Optionally, instead of the full replication interface, a [Replication Wizard](/hub/tasks/scheduled/replication/wizard) can be used to quickly configure different simple replication scenarios, such as very quickly creating and copying ZFS snapshots to another location or pool on the same system. This is useful when no remote backup locations are available or when there is an immediate danger of disk failure.
 
 ## Process Summary
 
