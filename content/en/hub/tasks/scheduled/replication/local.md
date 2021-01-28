@@ -55,14 +55,17 @@ Every saved replication task can be loaded into the wizard to make creating new 
 You can define a specific schedule for this replication or choose to run it immediately after saving the new task.
 Unscheduled tasks are still saved in the replication task list and can be run manually or edited later to add a schedule.
 
-The destination lifetime is how long copied snapshots are stored in the destination before they are deleted.
-While snapshots take very little space, they may contain old data that no longer exists in the current pool, and this accumulation of old data may take up space.
-Therefore it is usually recommended to define a snapshot lifetime to reduce the scope for storage issues.
-Choosing to keep snapshots indefinitely may require you to manually remove old snapshots in the destination pool, if the destination becomes too full.
-ZFS prefers pools to be under around 75% - 90% full, and may run with reduced inefficiency when nearly full.
+## Snapshot lifetime
+
+Snapshots themselves take very little space, but may contain old data that no longer exists in the current pool. Obsolete data may accumulate in very old snapshots, and take up space in the destination pool. ZFS prefers pools to be under around 75% - 90% full, and may run with reduced inefficiency when nearly full.
+
+For these reasons, it is usually recommended to define a destination snapshot lifetime. The lifetime specifies how long copied snapshots are stored in the destination before they are deleted. Choosing to keep snapshots indefinitely may require you to manually remove old snapshots in the destination pool, if the destination becomes too full.
+
 
 <img src="/images/TasksReplicationTasksAddLocalSourceLocalDestCustomLife.png">
 <br><br>
+
+## Saving and executing the task
 
 Clicking **START REPLICATION** saves the new task and immediately attempts to replicate snapshots to the destination.
 When TrueNAS detects that the destination already has unrelated snapshots, it will ask to delete the unrelated snapshots and do a full copy of the new snapshots.
