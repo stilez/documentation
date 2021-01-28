@@ -20,7 +20,7 @@ tags: ["ZFS", "replication"]
   * Set the Replication schedule to run a single time
   * Define how long the snapshots will be stored in the Destination
   * Clicking "START REPLICATION" immediately snapshots the chosen Sources and copies those snapshots to the Destination
-    * Dialog might ask to delete existing snapshots from the Destination. Be sure that all important important data is protected before deleting anything.
+    * Replication causes data in the destination to match the data in the source. As part of the process, snapshots that no longer exist in the source may need to be deleted in the destination. If this is required, a dialog will ask for confirmation to delete existing snapshots from the destination. Be sure that all important important data is protected before continuing.
 * Clicking the task *State* shows the logs for that replication task.
 
 ## Quick Backups with the Replication Wizard
@@ -56,8 +56,10 @@ You can define a specific schedule for this replication or choose to run it imme
 Unscheduled tasks are still saved in the replication task list and can be run manually or edited later to add a schedule.
 
 The destination lifetime is how long copied snapshots are stored in the destination before they are deleted.
-It is usually recommended to define a snapshot lifetime to prevent storage issues.
-Choosing to keep snapshots indefinitely can require you to manually clean old snapshots from the system if or when the destination fills to capacity.
+While snapshots take very little space, they may contain old data that no longer exists in the current pool, and this accumulation of old data may take up space.
+Therefore it is usually recommended to define a snapshot lifetime to reduce the scope for storage issues.
+Choosing to keep snapshots indefinitely may require you to manually remove old snapshots in the destination pool, if the destination becomes too full.
+ZFS prefers pools to be under around 75% - 90% full, and may run with reduced inefficiency when nearly full.
 
 <img src="/images/TasksReplicationTasksAddLocalSourceLocalDestCustomLife.png">
 <br><br>
